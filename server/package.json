@@ -1,0 +1,24 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "Node (express) server integrated with MySQL",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon --exec babel-node index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Tomer Levi",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "helmet": "^3.21.3",
+        "nodemon": "^2.0.2"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.8.7",
+        "@babel/node": "^7.8.7",
+        "@babel/preset-env": "^7.8.7"
+    }
+}
