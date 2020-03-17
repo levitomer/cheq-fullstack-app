@@ -1,5 +1,6 @@
 import express from 'express';
-import * as routes from './routes';
+// import * as routes from './routes';
+import * as routes from './mocks';
 
 const router = express.Router();
 
