@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Vasts(props) {
-    return <div>props</div>;
+    return <div>Vasts</div>;
 }
 
 export default Vasts;
