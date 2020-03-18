@@ -1,0 +1,21 @@
+<VAST version="2.0">
+<Ad>
+    <InLine>
+        <AdSystem>2.0</AdSystem>
+        <Impression/>
+        <Creatives>
+        <Creative>
+        <Linear>
+            <MediaFiles>
+                <MediaFile type="application/javascript" apiFramework="VPAID" height="[HEIGHT]" width="[WIDTH]" delivery="progressive">
+                <![CDATA[
+                https://cheq.com/vpaid.js?vast=[VAST_URL]&position=[POSITION]&vastId=[VAST_ID]
+                ]]>
+                </MediaFile>
+            </MediaFiles>
+        </Linear>
+        </Creative>
+        </Creatives>
+    </InLine>
+</Ad>
+</VAST>
