@@ -13,7 +13,7 @@ const handlers = {
         return { ...state, loading: true };
     },
     [types.FETCH_VAST_SUCCESS]: (state, payload) => {
-        return { ...state, vasts: payload, loading: false };
+        return { ...state, data: payload, loading: false };
     },
     [types.FETCH_VAST_FAILURE]: (state, payload) => {
         return { ...state, error: payload, loading: false };
@@ -24,7 +24,7 @@ const handlers = {
         return { ...state, loading: true };
     },
     [types.CREATE_VAST_SUCCESS]: (state, payload) => {
-        return { ...state, vasts: { ...state.vasts, payload }, loading: false };
+        return { ...state, data: { ...state.data, payload }, loading: false };
     },
     [types.CREATE_VAST_FAILURE]: (state, payload) => {
         return { ...state, error: payload, loading: false };
@@ -35,7 +35,7 @@ const handlers = {
         return { ...state, loading: true };
     },
     [types.EDIT_VAST_SUCCESS]: (state, payload) => {
-        return { ...state, vasts: payload, loading: false };
+        return { ...state, data: { ...state.data, payload }, loading: false };
     },
     [types.EDIT_VAST_FAILURE]: (state, payload) => {
         return { ...state, error: payload, loading: false };

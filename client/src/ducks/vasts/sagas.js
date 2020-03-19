@@ -5,8 +5,7 @@ import * as api from '../../routes/vasts';
 function* fetchVasts() {
     try {
         const response = yield call(api.fetchVasts);
-        console.log('response: ', response);
-        yield put({ type: types.FETCH_VAST_SUCCESS, response });
+        yield put({ type: types.FETCH_VAST_SUCCESS, payload: response.data });
     } catch (err) {
         yield put({ type: types.FETCH_VAST_FAILURE, err });
     }

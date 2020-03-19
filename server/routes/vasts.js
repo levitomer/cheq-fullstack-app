@@ -1,7 +1,17 @@
+import { connection } from '../index';
+import * as queries from '../db/queries';
+
 export default router => {
-    router.route('/fetch_vasts').get((req, res) => {
-        // TODO: return all vasts from DB
-        res.send(['hello', 'world']);
+    router.route('/fetch_vasts').get((_, res) => {
+        connection.query(queries.SELECT_ALL_VASTS, (err, results) => {
+            if (err) {
+                return res.send(err);
+            }
+            console.log(results);
+            return res.json({
+                data: results
+            });
+        });
     });
 
     router.route('/create_vast').post((req, res) => {

@@ -10,13 +10,11 @@ class VastsContainer extends React.Component {
     }
 
     render() {
-        console.log('vasts: ', this.props.vasts);
         if (this.props.loading) {
             return <div>Loading</div>;
         } else if (this.props.error) {
             return <div>error</div>;
         }
-
         return <Vasts vasts={this.props.vasts} />;
     }
 }

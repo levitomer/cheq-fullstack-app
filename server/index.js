@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import helmet from 'helmet';
+import mysql from 'mysql';
 import api from './api';
 
 const server = express();
@@ -18,6 +19,20 @@ server.use((req, res, next) => {
 
     next();
 });
+
+export const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Tomer12345!',
+    database: 'vasts'
+});
+
+connection.connect(err => {
+    if (err) console.log(err);
+});
+
+// connection.end();
+
 // Limiting browser session to 30 mins
 server.use(
     session({
