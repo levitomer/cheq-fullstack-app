@@ -4,6 +4,7 @@ import { fetchVastById } from 'ducks/vasts/actions';
 import { useLocation } from 'react-router-dom';
 import * as selectors from 'ducks/vasts/selectors';
 import { VastXML } from './VastXML.style';
+import Logo from 'components/Logo/Logo';
 
 // A custom hook that builds on useLocation to parse
 function useQuery() {
@@ -25,7 +26,11 @@ export default function VastXMLContainer(props) {
     );
 
     if (loading) {
-        return <div>Loading</div>;
+        return (
+            <div>
+                <Logo />
+            </div>
+        );
     } else if (error) {
         return <div>Error</div>;
     }

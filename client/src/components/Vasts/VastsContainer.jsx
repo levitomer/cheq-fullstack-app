@@ -4,6 +4,7 @@ import * as selectors from 'ducks/vasts/selectors';
 import { fetchVasts } from 'ducks/vasts/actions';
 import Vast from './Vast';
 import Loader from 'components/Loader/Loader';
+import Header from 'components/Header/Header';
 
 export default function VastsContainer(_) {
     const dispatch = useDispatch();
@@ -26,9 +27,12 @@ export default function VastsContainer(_) {
     }
 
     return (
-        data &&
-        data.map(vast => {
-            return <Vast key={vast.id} vast={vast} />;
-        })
+        <React.Fragment>
+            <Header />
+            {data &&
+                data.map(vast => {
+                    return <Vast key={vast.id} vast={vast} />;
+                })}
+        </React.Fragment>
     );
 }

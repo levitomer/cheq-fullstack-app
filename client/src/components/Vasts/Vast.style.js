@@ -80,7 +80,7 @@ export const Position = styled.div`
 `;
 
 export const Options = styled.div`
-    padding: 1%;
+    padding: 2%;
     display: flex;
     margin-left: 4px;
     color: gray;
@@ -92,9 +92,31 @@ export const Options = styled.div`
 export const EditVast = styled.button`
     width: 5vh;
     height: 3vh;
+    opacity: 0.8;
+    margin: 1% 1%;
+    color: #f0f8ff;
+    border-radius: 3px;
+    border: 1px solid #f0f8ff;
+    background: transparent;
+    cursor: pointer;
+
+    :hover {
+        opacity: 1;
+    }
 `;
 
 export const ViewVastXML = styled.button`
     width: 5vh;
     height: 3vh;
+    opacity: 0.8;
+    margin: 1% 1%;
+    color: #f0f8ff;
+    border-radius: 3px;
+    border: 1px solid #f0f8ff;
+    background: transparent;
+    cursor: pointer;
+
+    :hover {
+        opacity: 1;
+    }
 `;
