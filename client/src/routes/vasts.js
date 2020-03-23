@@ -4,20 +4,14 @@ export function fetchVasts() {
     return fetchRequest('fetch_vasts');
 }
 
-export function createVast(vast_url, position, width, height) {
+export function createVast(payload) {
     return fetchRequest('create_vast', {
         method: 'POST',
-        body: {
-            vast_url,
-            position,
-            width,
-            height
-        }
+        body: payload
     });
 }
 
 export function editVast(payload) {
-    console.log('client: ', payload);
     return fetchRequest('edit_vast', {
         method: 'PATCH',
         body: payload

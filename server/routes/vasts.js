@@ -15,13 +15,29 @@ export default router => {
     });
 
     router.route('/create_vast').post((req, res) => {
-        // TODO: save a new vast into DB and return the new vast
+        console.og(queries.INSERT_VAST('Vasts', req.body));
+
+        connection.query(queries.INSERT_VAST('Vasts', req.body), (err, _) => {
+            if (err) {
+                return res.send(err);
+            }
+
+            console.og('SUCCESS');
+
+            return res.status(201).json({
+                data: results
+            });
+        });
     });
 
     router.route('/edit_vast').patch((req, res) => {
-        console.log(req.body);
-        return res.json({
-            data: req.body
+        connection.query(queries.UPDATE_VAST('Vasts', req.body), (err, _) => {
+            if (err) {
+                return res.send(err);
+            }
+            return res.status(204).json({
+                data: `Vast (id: ${req.body.id}) updated successfully`
+            });
         });
     });
 

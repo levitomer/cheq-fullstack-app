@@ -4,7 +4,7 @@ import * as types from './types';
 const initialState = {
     loading: false,
     error: null,
-    data: null,
+    data: [],
     xml: null
 };
 
@@ -27,7 +27,7 @@ const handlers = {
     [types.CREATE_VAST_SUCCESS]: (state, payload) => {
         return {
             ...state,
-            data: { ...state.data, payload },
+            data: [...state.data, payload],
             loading: false,
             error: null
         };
@@ -41,9 +41,10 @@ const handlers = {
         return { ...state, loading: true };
     },
     [types.EDIT_VAST_SUCCESS]: (state, payload) => {
+        const vasts = state.data.filter(({ id }) => id !== payload.id);
         return {
             ...state,
-            data: { ...state.data, payload },
+            data: [...vasts, payload],
             loading: false,
             error: null
         };

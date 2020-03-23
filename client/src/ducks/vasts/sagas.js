@@ -13,7 +13,8 @@ function* fetchVasts() {
 
 function* createVast() {
     try {
-        yield put({ type: types.CREATE_VAST_SUCCESS });
+        const response = yield call(api.createVast, payload);
+        yield put({ type: types.CREATE_VAST_SUCCESS, payload: response.data });
     } catch (err) {
         yield put({ type: types.CREATE_VAST_FAILURE, err });
     }
@@ -24,6 +25,7 @@ function* editVast({ payload }) {
         yield call(api.editVast, payload);
         yield put({ type: types.EDIT_VAST_SUCCESS, payload });
     } catch (err) {
+        console.log(err);
         yield put({ type: types.EDIT_VAST_FAILURE });
     }
 }

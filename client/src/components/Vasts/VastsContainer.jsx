@@ -1,38 +1,36 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import * as selectors from '../../ducks/vasts/selectors';
-import { fetchVasts } from '../../ducks/vasts/actions';
-import Vasts from './Vasts';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import * as selectors from 'ducks/vasts/selectors';
+import { fetchVasts } from 'ducks/vasts/actions';
+import Vast from './Vast';
+import Loader from 'components/Loader/Loader';
 
-class VastsContainer extends React.Component {
-    componentDidMount() {
-        this.props.actions.fetchVasts();
+function VastsContainer(props) {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchVasts());
+    }, [dispatch]);
+
+    const { loading, error, data } = useSelector(
+        selectors.getVasts,
+        shallowEqual
+    );
+
+    if (loading) {
+        return Array(10)
+            .fill()
+            .map((_, i) => <Loader key={i} />);
+    } else if (error) {
+        return <div>{'Error'}</div>;
     }
 
-    render() {
-        if (this.props.loading) {
-            return <div>Loading</div>;
-        } else if (this.props.error) {
-            return <div>error</div>;
-        }
-        return <Vasts vasts={this.props.vasts} />;
-    }
+    return (
+        data &&
+        data.map(vast => {
+            return <Vast key={vast.id} vast={vast} />;
+        })
+    );
 }
 
-function mapStateToProps(state) {
-    return {
-        vasts: selectors.getVasts(state),
-        loading: selectors.getLoading(state),
-        error: selectors.getError(state)
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        actions: {
-            fetchVasts: () => dispatch(fetchVasts())
-        }
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(VastsContainer);
+export default VastsContainer;

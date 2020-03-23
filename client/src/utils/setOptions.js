@@ -4,6 +4,8 @@ export default function setOptions(options = {}) {
         ...options.headers
     };
 
+    options.headers['Content-Type'] = 'application/json';
+
     options.body =
         options.headers['Content-Type'] === 'application/json' &&
         typeof options.body !== 'string'

@@ -4,7 +4,7 @@ import parseResponse from './parseResponse';
 import setOptions from './setOptions';
 import createQuery from './createQuery';
 
-const API_ROOT = 'http://localhost:3000';
+const API_ROOT = 'http://localhost:3000'; // server address
 
 export default function fetchRequest(url, options, query) {
     let queryUrl = query ? createQuery(query) : '';
