@@ -15,7 +15,7 @@ import {
 } from './EditVastModal.style';
 import { SubmitModal } from '../../Modal.style';
 
-function EditVastModal(props) {
+export default function EditVastModal(props) {
     const vastId = props.fields;
     const { register, handleSubmit, watch, errors } = useForm();
     const dispatch = useDispatch();
@@ -40,7 +40,7 @@ function EditVastModal(props) {
                 {/* include validation with required or other standard HTML validation rules */}
                 <Label>Picture URL</Label>
                 <VastUrl
-                    name="url"
+                    name="vast_url"
                     defaultValue={vast.vast_url}
                     ref={register({ required: true })}
                 />
@@ -59,7 +59,7 @@ function EditVastModal(props) {
                 <Label>Position</Label>
                 <VastPosition
                     name="position"
-                    defaultValue={vast.vast_position}
+                    defaultValue={vast.position}
                     ref={register({ required: true })}
                 >
                     {Object.values(VAST_POSITIONS).map(position => (
@@ -75,5 +75,3 @@ function EditVastModal(props) {
         </form>
     );
 }
-
-export default EditVastModal;

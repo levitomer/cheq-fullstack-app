@@ -5,7 +5,7 @@ import { fetchVasts } from 'ducks/vasts/actions';
 import Vast from './Vast';
 import Loader from 'components/Loader/Loader';
 
-function VastsContainer(props) {
+export default function VastsContainer(_) {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -32,5 +32,3 @@ function VastsContainer(props) {
         })
     );
 }
-
-export default VastsContainer;

@@ -10,7 +10,7 @@ function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 
-function VastXMLContainer(props) {
+export default function VastXMLContainer(props) {
     const dispatch = useDispatch();
     const queryParams = useQuery();
 
@@ -32,5 +32,3 @@ function VastXMLContainer(props) {
 
     return xml && <VastXML>{xml}</VastXML>;
 }
-
-export default VastXMLContainer;

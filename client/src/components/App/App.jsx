@@ -4,7 +4,8 @@ const VastsContainer = lazy(() => import('components/Vasts/VastsContainer'));
 const VastXMLContainer = lazy(() =>
     import('components/Vasts/VastXML/VastXMLContainer')
 );
-function App() {
+
+export default function App() {
     return (
         <BrowserRouter>
             <Suspense fallback={<div>Loading...</div>}>
@@ -17,5 +18,3 @@ function App() {
         </BrowserRouter>
     );
 }
-
-export default App;
