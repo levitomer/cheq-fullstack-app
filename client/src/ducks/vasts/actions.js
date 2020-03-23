@@ -4,15 +4,10 @@ export function fetchVasts() {
     return { type: types.FETCH_VAST_REQUEST };
 }
 
-export function createVast(vast_url, position, width, height) {
+export function createVast(newVast) {
     return {
-        type: types.FETCH_VAST_REQUEST,
-        payload: {
-            vast_url,
-            position,
-            width,
-            height
-        }
+        type: types.CREATE_VAST_REQUEST,
+        payload: newVast
     };
 }
 

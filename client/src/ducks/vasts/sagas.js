@@ -1,4 +1,5 @@
 import * as types from './types';
+import { HIDE_MODAL } from 'ducks/modal/types';
 import { takeLatest, put, call } from 'redux-saga/effects';
 import * as api from 'routes/vasts';
 
@@ -11,11 +12,16 @@ function* fetchVasts() {
     }
 }
 
-function* createVast() {
+function* createVast({ payload }) {
     try {
         const response = yield call(api.createVast, payload);
-        yield put({ type: types.CREATE_VAST_SUCCESS, payload: response.data });
+        yield put({ type: HIDE_MODAL });
+        yield put({
+            type: types.CREATE_VAST_SUCCESS,
+            payload: { id: response.data, ...payload }
+        });
     } catch (err) {
+        console.log(err);
         yield put({ type: types.CREATE_VAST_FAILURE, err });
     }
 }
@@ -23,9 +29,9 @@ function* createVast() {
 function* editVast({ payload }) {
     try {
         yield call(api.editVast, payload);
+        yield put({ type: HIDE_MODAL });
         yield put({ type: types.EDIT_VAST_SUCCESS, payload });
     } catch (err) {
-        console.log(err);
         yield put({ type: types.EDIT_VAST_FAILURE });
     }
 }

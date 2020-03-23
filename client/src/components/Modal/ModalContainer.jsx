@@ -9,7 +9,7 @@ import {
 } from './Modal.style';
 import { useModal, useHideModal } from './hooks';
 
-export const ModalContainer = () => {
+export default function ModalContainer() {
     // Get modal params from redux store
 
     const { modal } = useModal();
@@ -33,4 +33,4 @@ export const ModalContainer = () => {
             </ModalBox>
         </ModalOverlay>
     );
-};
+}

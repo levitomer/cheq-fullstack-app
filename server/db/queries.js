@@ -7,7 +7,7 @@ export const INSERT_VAST = (
 ) => `INSERT INTO ${table} (
     location,
     vast_url,
-    vast_position,
+    position,
     height,
     width) VALUES (
         '${location}',
@@ -17,11 +17,11 @@ export const INSERT_VAST = (
         '${width}')`;
 export const UPDATE_VAST = (
     table,
-    { id, location, url, position, height, width }
+    { id, location, vast_url, position, height, width }
 ) => `UPDATE ${table} SET
             location = '${location}',
-            vast_url = '${url}',
-            vast_position = '${position}',
+            vast_url = '${vast_url}',
+            position = '${position}',
             height = ${height},
             width = ${width}
             WHERE id = '${id}'`;

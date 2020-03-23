@@ -25,6 +25,7 @@ const handlers = {
         return { ...state, loading: true };
     },
     [types.CREATE_VAST_SUCCESS]: (state, payload) => {
+        console.log('CREATE_VAST_SUCCESS', payload);
         return {
             ...state,
             data: [...state.data, payload],
@@ -41,10 +42,13 @@ const handlers = {
         return { ...state, loading: true };
     },
     [types.EDIT_VAST_SUCCESS]: (state, payload) => {
-        const vasts = state.data.filter(({ id }) => id !== payload.id);
+        const vasts = state.data.map(vast => {
+            if (vast.id === payload.id) return payload;
+            return vast;
+        });
         return {
             ...state,
-            data: [...vasts, payload],
+            data: vasts,
             loading: false,
             error: null
         };

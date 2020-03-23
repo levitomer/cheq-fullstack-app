@@ -8,26 +8,25 @@ export default router => {
             if (err) {
                 return res.send(err);
             }
-            return res.json({
+            return res.status(200).json({
                 data: results
             });
         });
     });
 
     router.route('/create_vast').post((req, res) => {
-        console.og(queries.INSERT_VAST('Vasts', req.body));
+        connection.query(
+            queries.INSERT_VAST('Vasts', req.body),
+            (err, results) => {
+                if (err) {
+                    return res.send(err);
+                }
 
-        connection.query(queries.INSERT_VAST('Vasts', req.body), (err, _) => {
-            if (err) {
-                return res.send(err);
+                return res.status(201).json({
+                    data: results.insertId
+                });
             }
-
-            console.og('SUCCESS');
-
-            return res.status(201).json({
-                data: results
-            });
-        });
+        );
     });
 
     router.route('/edit_vast').patch((req, res) => {
@@ -48,7 +47,7 @@ export default router => {
                 return res.send(err);
             }
             res.set('Content-Type', 'text/xml');
-            return res.send(viewXML(...results));
+            return res.status(200).send(viewXML(...results));
         });
     });
 };

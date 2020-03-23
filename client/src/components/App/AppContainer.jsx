@@ -1,20 +1,18 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import App from './App';
-import { ModalContainer } from 'components/Modal/ModalContainer';
+import ModalContainer from 'components/Modal/ModalContainer';
+import Header from 'components/Header/Header';
 import { Container } from './App.style';
 
-class AppContainer extends React.Component {
-    render() {
-        return (
-            <Provider store={this.props.store}>
-                <Container>
-                    <App />
-                </Container>
-                <ModalContainer />
-            </Provider>
-        );
-    }
+export default function AppContainer(props) {
+    return (
+        <Provider store={props.store}>
+            <Container>
+                <Header />
+                <App />
+            </Container>
+            <ModalContainer />
+        </Provider>
+    );
 }
-
-export default AppContainer;
