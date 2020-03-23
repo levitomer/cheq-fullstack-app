@@ -2,9 +2,9 @@ CREATE TABLE Vasts (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	location VARCHAR(600) NOT NULL,
 	vast_url VARCHAR(600),
-	vast_position VARCHAR(100) NOT NULL DEFAULT 'bottom_right',
+	position VARCHAR(100) NOT NULL DEFAULT 'bottom_right',
 	CONSTRAINT check_positioning CHECK (
-		vast_position IN (
+		position IN (
 			'top_left', 'top_middle', 'top_right',
 			'middle_left', 'middle_right', 'bottom_left',
 			'bottom_middle', 'bottom_right'
@@ -22,7 +22,7 @@ CREATE TABLE Vasts (
 	)
 );
 
-INSERT INTO Vasts (id, location, vast_url, vast_position, height, width) VALUES
+INSERT INTO Vasts (id, location, vast_url, position, height, width) VALUES
 (1, 'Tel Aviv', 'https://visitisrael.cn/goisrael/wp-content/uploads/2018/05/telaviv121-min-1.jpg', 'bottom_right', 100, 100),
 (2, 'Los Angeles', 'https://www.smartcitiesworld.net/AcuCustom/Sitename/DAM/017/LosAngeles_with_palms_Adobe.jpg', 'bottom_right', 100, 100),
 (3, 'New York', 'https://i.ytimg.com/vi/gYLQThUxpvQ/maxresdefault.jpg', 'bottom_right', 100, 100),
