@@ -25,7 +25,6 @@ const handlers = {
         return { ...state, loading: true };
     },
     [types.CREATE_VAST_SUCCESS]: (state, payload) => {
-        console.log('CREATE_VAST_SUCCESS', payload);
         return {
             ...state,
             data: [...state.data, payload],
