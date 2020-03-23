@@ -1,10 +1,11 @@
-import { createReducer } from '../../utils';
+import { createReducer } from 'utils';
 import * as types from './types';
 
 const initialState = {
     loading: false,
     error: null,
-    data: null
+    data: null,
+    xml: null
 };
 
 const handlers = {
@@ -13,7 +14,7 @@ const handlers = {
         return { ...state, loading: true };
     },
     [types.FETCH_VAST_SUCCESS]: (state, payload) => {
-        return { ...state, data: payload, loading: false };
+        return { ...state, data: payload, loading: false, error: null };
     },
     [types.FETCH_VAST_FAILURE]: (state, payload) => {
         return { ...state, error: payload, loading: false };
@@ -24,7 +25,12 @@ const handlers = {
         return { ...state, loading: true };
     },
     [types.CREATE_VAST_SUCCESS]: (state, payload) => {
-        return { ...state, data: { ...state.data, payload }, loading: false };
+        return {
+            ...state,
+            data: { ...state.data, payload },
+            loading: false,
+            error: null
+        };
     },
     [types.CREATE_VAST_FAILURE]: (state, payload) => {
         return { ...state, error: payload, loading: false };
@@ -35,10 +41,26 @@ const handlers = {
         return { ...state, loading: true };
     },
     [types.EDIT_VAST_SUCCESS]: (state, payload) => {
-        return { ...state, data: { ...state.data, payload }, loading: false };
+        return {
+            ...state,
+            data: { ...state.data, payload },
+            loading: false,
+            error: null
+        };
     },
     [types.EDIT_VAST_FAILURE]: (state, payload) => {
         return { ...state, error: payload, loading: false };
+    },
+
+    // VIEW VAST HANDLERS
+    [types.FETCH_VAST_BY_ID_REQUEST]: state => {
+        return { ...state, loading: true };
+    },
+    [types.FETCH_VAST_BY_ID_SUCCESS]: (state, payload) => {
+        return { ...state, xml: payload, loading: false, error: null };
+    },
+    [types.FETCH_VAST_BY_ID_FAILURE]: (state, payload) => {
+        return { ...state, xml: null, loading: false, error: payload };
     }
 };
 

@@ -2,29 +2,21 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import helmet from 'helmet';
+import cors from 'cors';
 import mysql from 'mysql';
 import api from './api';
 
 const server = express();
 
 server.use(helmet()); // Secure HTTP headers
-server.use(bodyParser.json()); // Enable JSON encoded bodies
-server.use(
-    bodyParser.urlencoded({
-        extended: true
-    })
-);
-server.use((req, res, next) => {
-    // Grant any client to send a request
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    // Control what methods are allowed to be performed
-    res.setHeader('Access-Control-Allow-Methods', 'POST, PATCH, GET, OPTIONS');
-    // Control what headers are allowed to be sent
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-    next();
-});
-
+server.use(express.json()); // Enable JSON encoded bodies
+server.use(express.urlencoded({ extended: true }));
+server.use(cors());
+// server.use(
+//     bodyParser.urlencoded({
+//         extended: true
+//     })
+// );
 export const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',

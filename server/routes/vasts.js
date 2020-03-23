@@ -18,8 +18,8 @@ export default router => {
         // TODO: save a new vast into DB and return the new vast
     });
 
-    router.route('/edit_vast').post((req, res) => {
-        console.log('edit_vast: ', req.body);
+    router.route('/edit_vast').patch((req, res) => {
+        console.log(req.body);
         return res.json({
             data: req.body
         });
