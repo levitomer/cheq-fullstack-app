@@ -9,6 +9,11 @@ const server = express();
 
 server.use(helmet()); // Secure HTTP headers
 server.use(bodyParser.json()); // Enable JSON encoded bodies
+server.use(
+    bodyParser.urlencoded({
+        extended: true
+    })
+);
 server.use((req, res, next) => {
     // Grant any client to send a request
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,9 +34,8 @@ export const connection = mysql.createConnection({
 
 connection.connect(err => {
     if (err) console.log(err);
+    console.log('Connection to MySQL server established');
 });
-
-// connection.end();
 
 // Limiting browser session to 30 mins
 server.use(
@@ -46,8 +50,6 @@ server.use(
         rolling: true
     })
 );
-
-// TODO: onfigure webpack hot middleware
 
 server.use('/', api);
 

@@ -1,6 +1,6 @@
 /* global API_ROOT */
 
-import parseJSON from './parseJSON';
+import parseResponse from './parseResponse';
 import setOptions from './setOptions';
 import createQuery from './createQuery';
 
@@ -16,6 +16,6 @@ export default function fetchRequest(url, options, query) {
         options = { method: 'GET' };
     }
     return fetch(`${url}${queryUrl}`, setOptions({ ...options }))
-        .then(parseJSON)
+        .then(parseResponse)
         .then(data => data);
 }
