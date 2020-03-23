@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import vasts from './vasts/reducers';
 import modal from './modal/reducers';
+import form from './form/reducers';
 
 const reducers = combineReducers({
     vasts,
-    modal
+    modal,
+    form
 });
 
 const rootReducer = (state, action) => {

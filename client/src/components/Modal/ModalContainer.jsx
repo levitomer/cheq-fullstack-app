@@ -17,9 +17,13 @@ export default function ModalContainer() {
 
     const { handleOnClose } = useHideModal();
     // Import dynamic component according to component type param
-    const Modal = lazy(() => import('components/Modal/Types/' + type + '.jsx'));
+    const Modal = lazy(() => import('components/Modal/Forms/' + type + '.jsx'));
+
+    if (!toggle) return null;
+
     return (
-        <ModalOverlay toggle={toggle}>
+        <React.Fragment>
+            <ModalOverlay />
             <ModalBox>
                 <ModalHeader>
                     {title && <ModalTitle>{title}</ModalTitle>}
@@ -31,6 +35,6 @@ export default function ModalContainer() {
                     </Suspense>
                 </ModalBody>
             </ModalBox>
-        </ModalOverlay>
+        </React.Fragment>
     );
 }

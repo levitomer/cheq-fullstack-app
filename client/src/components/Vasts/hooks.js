@@ -8,7 +8,7 @@ export const useCreateVast = () => {
         dispatch(
             showModal({
                 title: 'Create New Vast',
-                type: 'CreateVast/CreateVastModal',
+                type: 'CreateVast/CreateVastForm',
                 fields: {}
             })
         );
@@ -21,7 +21,7 @@ export const useEditVast = id => {
         dispatch(
             showModal({
                 title: 'Edit Vast',
-                type: 'EditVast/EditVastModal',
+                type: 'EditVast/EditVastForm',
                 fields: id
             })
         );
