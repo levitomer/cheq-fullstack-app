@@ -1,4 +1,10 @@
-export function viewXML({ id, position, vast_url, height, width }) {
+export default function buildXML(args) {
+    if (args.length === 0) {
+        return '<VAST version="2.0"></VAST>';
+    }
+
+    const { id, position, vast_url, height, width } = args;
+
     return `<VAST version="2.0">
         <Ad>
             <InLine>

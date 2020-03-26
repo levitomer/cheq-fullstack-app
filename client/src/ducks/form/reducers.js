@@ -13,7 +13,7 @@ const handlers = {
         };
     },
     [types.RESET_FORM]: state => {
-        return { ...state, ...initialState };
+        return { ...initialState };
     }
 };
 

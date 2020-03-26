@@ -60,12 +60,3 @@ export const CloseModal = styled.button`
     background: transparent;
     font-size: 12px;
 `;
-
-export const SubmitModal = styled.button`
-    margin-top: 10%;
-    width: 100%;
-    height: 5vh;
-    background: #0947ff;
-    color: white;
-    border: none;
-`;

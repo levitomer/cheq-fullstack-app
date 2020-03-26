@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getVasts } from 'ducks/vasts/selectors';
 import { getForm } from 'ducks/form/selectors';
 import { useForm } from 'react-hook-form';
@@ -8,7 +8,7 @@ import { invalidForm } from 'ducks/form/actions';
 import * as VAST_POSITIONS from 'constants/vastPositions';
 import * as validations from '../validations';
 import { Form, Fields, Field, VastPosition, Label, Error } from '../Form.style';
-import { SubmitModal } from '../../Modal.style';
+import { Submit } from '../Form.style';
 
 export default function EditVastForm(props) {
     const vastId = props.fields;
@@ -31,16 +31,19 @@ export default function EditVastForm(props) {
                 <Field
                     name="location"
                     defaultValue={vast.location}
-                    ref={register({ ...validations.location })}
+                    ref={register({ validate: validations.location })}
                 />
                 {errors.location && (
-                    <Error>Location value allowed up to 30 characters</Error>
+                    <Error>
+                        Location values a-zA-Z are allowed, and up to 30
+                        characters
+                    </Error>
                 )}
                 <Label>Picture URL</Label>
                 <Field
                     name="vast_url"
                     defaultValue={vast.vast_url}
-                    ref={register({ ...validations.vast_url })}
+                    ref={register({ validate: validations.vast_url })}
                 />
                 {errors.vast_url && <Error>Invalid image URL</Error>}
                 <Label>Height</Label>
@@ -79,7 +82,7 @@ export default function EditVastForm(props) {
                 <Error>At-least one field is required to edit a vast.</Error>
             )}
 
-            <SubmitModal type="submit">Save</SubmitModal>
+            <Submit type="submit">Save</Submit>
         </Form>
     );
 }

@@ -1,24 +1,33 @@
 export const SELECT_ALL_VASTS = 'SELECT * FROM Vasts';
-export const SELECT_VAST_BY_ID = vast_id =>
-    `SELECT * FROM Vasts WHERE id = ${vast_id}`;
-export const INSERT_VAST = (
-    table,
-    { location, url, position, height, width }
-) => `INSERT INTO ${table} (
+
+export const SELECT_VAST_BY_ID = id => `SELECT * FROM Vasts WHERE id = '${id}'`;
+
+export const INSERT_VAST = ({
+    location,
+    vast_url,
+    position,
+    height,
+    width
+}) => `INSERT INTO Vasts (
     location,
     vast_url,
     position,
     height,
     width) VALUES (
         '${location}',
-        '${url}',
+        '${vast_url}',
         '${position}',
         '${height}',
         '${width}')`;
-export const UPDATE_VAST = (
-    table,
-    { id, location, vast_url, position, height, width }
-) => `UPDATE ${table} SET
+
+export const UPDATE_VAST = ({
+    location,
+    vast_url,
+    position,
+    height,
+    width,
+    id
+}) => `UPDATE Vasts SET
             location = '${location}',
             vast_url = '${vast_url}',
             position = '${position}',

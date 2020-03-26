@@ -17,7 +17,7 @@ export default function ModalContainer() {
 
     const { handleOnClose } = useHideModal();
     // Import dynamic component according to component type param
-    const Modal = lazy(() => import('components/Modal/Forms/' + type + '.jsx'));
+    const Modal = lazy(() => import('components/Forms/' + type + '.jsx'));
 
     if (!toggle) return null;
 

@@ -28,3 +28,12 @@ export const Error = styled.span`
     color: red;
     font-size: 12px;
 `;
+
+export const Submit = styled.button`
+    margin-top: 10%;
+    width: 100%;
+    height: 5vh;
+    background: #0947ff;
+    color: white;
+    border: none;
+`;
